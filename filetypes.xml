@@ -1,0 +1,16 @@
+<application>
+  <component name="FileTypeManager" version="17">
+    <extensionMap>
+      <mapping pattern="dd" type="Groovy" />
+      <mapping ext="deploy" type="Groovy" />
+      <mapping pattern="Jenkinsfile" type="PLAIN_TEXT" />
+      <mapping pattern="Dockerfile" type="PLAIN_TEXT" />
+      <mapping pattern="lib" type="PLAIN_TEXT" />
+      <mapping pattern="40_alter_skuinventorystatus" type="PLAIN_TEXT" />
+      <mapping ext="csv" type="PLAIN_TEXT" />
+      <mapping ext="cql" type="PLAIN_TEXT" />
+      <mapping ext="factories" type="PLAIN_TEXT" />
+      <mapping ext="2" type="PLAIN_TEXT" />
+    </extensionMap>
+  </component>
+</application>
