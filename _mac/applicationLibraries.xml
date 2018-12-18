@@ -1,0 +1,12 @@
+<application>
+  <component name="libraryTable">
+    <library name="lib (3)">
+      <CLASSES>
+        <root url="file://$USER_HOME$/Documents/TaxService/tax-rs/lib" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+      <jarDirectory url="file://$USER_HOME$/Documents/TaxService/tax-rs/lib" recursive="false" />
+    </library>
+  </component>
+</application>
