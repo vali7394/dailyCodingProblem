@@ -1,8 +1,12 @@
 package com.dailyCodingProblem.dailyCodingProblem.DailyCodingProblems;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -433,14 +437,19 @@ public class ArrayProblems {
 
   public  static void incresingSubSeq() {
 
-    int[] array = {1,2};
+    int[] array = {50, 3, 10, 7, 40, 80};
+
+    int start = 0;
+    int end = 0;
+
+    List<List<Integer>> longest = new ArrayList<>();
 
     int[] temp = new int[array.length];
 
     int max = 1;
 
     for(int i=0; i<temp.length;i++) temp[i] = 1;
-
+        List<Integer> lis = new ArrayList<>();
     for(int i=1; i<array.length;i++) {
 
       for(int j=0 ; j<array.length; j++) {
@@ -452,7 +461,15 @@ public class ArrayProblems {
 
       }
 
+    longest.add(lis);
 
+    }
+
+    for(List<Integer> list : longest) {
+
+      if(list.size() == max) {
+        list.forEach(System.out::println);
+      }
 
     }
 
@@ -461,6 +478,115 @@ public class ArrayProblems {
 
   }
 
+
+
+  public static void squareMatrix() {
+
+    int[] array = {-9,-3,-1,2,4};
+
+    int k= 0;
+
+    for( k=0; k<array.length;k++){
+      if(array[k] >=0) break;
+    }
+
+
+    int i = k-1;
+    int j= k;
+
+    int index = 0;
+
+    int temp[] = new int[
+        array.length];
+
+    while(i>=0 && j<array.length) {
+
+      if(array[i] * array[i] < array[j] * array[j]){
+        temp[index] = array[i] * array[i];
+        i--;
+      } else {
+
+        temp[index] = array[j]*array[j];
+        j++;
+      }
+
+      index++;
+
+    }
+
+    while (i>=0) {
+      temp[index] = array[i]*array[i];
+      i--;
+      index++;
+    }
+
+    while(j<array.length) {
+      temp[index] = array[j]*array[j];
+      j++;
+      index++;
+
+    }
+
+
+    Arrays.stream(temp).forEach(System.out::println);
+
+    Map<Integer,Integer> colorCount = new HashMap<>();
+    for (Map.Entry<Integer,Integer> entry : colorCount.entrySet()) {}
+
+  }
+
+
+  public static void squareAndSortedList(int[] list) {
+
+
+    Arrays.stream(list).forEach(System.out::println);
+
+    int k = 0;
+
+    for( k=0; k<list.length;k++) {
+      if(list[k] >= 0) break;
+
+    }
+
+    int i = k-1;
+    int j = k;
+
+    int l =0;
+
+    int temp[] = new int[list.length];
+
+    while(i>=0 && j<list.length) {
+
+      if(list[i]*list[i] <= list[j]*list[j]) {
+        temp[l] = list[i]*list[i];
+        i--;
+      } else {
+
+        temp[l] = list[j]*list[j];
+        j++;
+
+      }
+
+      l++;
+
+    }
+
+    while (i>=0) {
+      temp[l] = list[i]*list[i];
+      i--;
+      l++;
+    }
+
+    while (j <list.length) {
+      temp[l] = list[j]*list[j];
+      j++;
+      l++;
+    }
+
+
+    Arrays.stream(temp).forEach(System.out::println);
+
+  }
 
 
 }

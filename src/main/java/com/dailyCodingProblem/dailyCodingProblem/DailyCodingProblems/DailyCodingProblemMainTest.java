@@ -17,7 +17,16 @@ public class DailyCodingProblemMainTest {
 
 //    StringProblems.longestCommonSubString();
 
-    ArrayProblems.incresingSubSeq();
+    //ArrayProblems.squareMatrix();
+
+
+    for(int i=0 ; i<10;i++) {
+      System.out.println(SampleSingleton.getInstance().num);
+    }
+
+
+   // int[] s = {-9, -2, 0, 2, 3};
+   // ArrayProblems.squareAndSortedList(s)
 
     /* int[] nos = {10, 15, 3, 7};
     long[] result = SumProblems.productArray(nos);
