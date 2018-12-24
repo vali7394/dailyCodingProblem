@@ -3,6 +3,7 @@ package com.dailyCodingProblem.dailyCodingProblem.DailyCodingProblems;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -588,5 +589,12 @@ public class ArrayProblems {
 
   }
 
+
+  /*public void test() {
+    int timeToLive = 345600;
+    Date todayDate = new Date();
+    long diffSeconds = (todayDate.getTime() - createdDate.getTime()) / 1000L;
+    String recordToLive = String.valueOf((long)Integer.parseInt(timeToLive) - diffSeconds);
+  }*/
 
 }
