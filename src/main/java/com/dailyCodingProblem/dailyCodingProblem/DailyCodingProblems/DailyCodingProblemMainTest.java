@@ -10,20 +10,20 @@ import java.util.stream.Stream;
  */
 public class DailyCodingProblemMainTest {
 
-  public  static void main(String args[]) {
+  public  static void main(String args[]) throws Exception {
 
 
 
 
 //    StringProblems.longestCommonSubString();
 
-    //ArrayProblems.squareMatrix();
+    ArrayProblems.maxProfit();
 
 
-    for(int i=0 ; i<10;i++) {
+    /*for(int i=0 ; i<10;i++) {
       System.out.println(SampleSingleton.getInstance().num);
     }
-
+*/
 
    // int[] s = {-9, -2, 0, 2, 3};
    // ArrayProblems.squareAndSortedList(s)

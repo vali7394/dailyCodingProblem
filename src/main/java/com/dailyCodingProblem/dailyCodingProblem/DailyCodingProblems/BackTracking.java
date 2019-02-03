@@ -164,4 +164,38 @@ public class BackTracking {
 
   }
 
+
+
+  public void permutations(List<Integer> list){
+
+    List<List<Integer>> finallist = new ArrayList<>();
+    permuteHelper(list,new ArrayList<>(),finallist);
+
+    finallist.forEach(permute->{
+      System.out.println();
+      permute.forEach(System.out::println);
+    });
+
+  }
+
+
+
+  public void permuteHelper(List<Integer> list , List<Integer> permute , List<List<Integer>> finalResult){
+
+    if(list.isEmpty()) {
+      finalResult.add(permute);
+    }
+
+    for(int i=0; i<list.size() ; i++) {
+
+      List<Integer> temp = new ArrayList<>(list);
+      temp.remove(i);
+      List<Integer> permuteTemp = new ArrayList<>();
+      permuteTemp.add(temp.get(i));
+      permuteHelper(temp,permuteTemp,finalResult);
+
+    }
+
+  }
+
 }
