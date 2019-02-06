@@ -221,6 +221,88 @@ public class FamousAlgos {
   }
 
 
+  public  static ArrayList<Integer[]> diskStacking(ArrayList<Integer[]> disks) {
+
+    disks.sort((disk1,disk2)->disk1[2].compareTo(disk2[2]));
+
+    int[] heights = new int[disks.size()];
+    int[] seqs = new int[disks.size()];
+
+    Arrays.fill(seqs,-1);
+
+    int k=0;
+
+    for(Integer[] disk : disks){
+      heights[k] = disk[2];
+      k++;
+    }
+
+    int maxHeigght = 0;
+    int maxHeightInd = -1;
+
+    for(int i=1 ; i<disks.size();i++){
+
+      Integer[] currentDisk = disks.get(i);
+
+      for(int j=0; j<i; j++){
+
+        Integer[] otherDisk = disks.get(j);
+
+        if(allDimensionsValid(otherDisk,currentDisk)){
+
+          if(heights[i]<=currentDisk[2]+heights[j]){
+            heights[i] = currentDisk[2] + heights[j];
+            seqs[i] = j;
+          }
+
+
+        }
+
+      }
+
+      if(maxHeigght < heights[i]){
+        maxHeigght = heights[i];
+        maxHeightInd = i;
+      }
+
+
+    }
+
+    return buildSeqs(disks,seqs,maxHeightInd);
+    // Write your code here.
+  }
+
+
+  public static boolean allDimensionsValid(Integer[] diskOne , Integer[] diskTwo){
+
+    if(diskOne[0] < diskTwo[0] && diskOne[1]<diskTwo[1] && diskOne[2] < diskTwo[2]){
+      return true;
+    }
+
+    return false;
+
+  }
+
+
+  public static ArrayList<Integer[]> buildSeqs(ArrayList<Integer[]> array , int seqs[] , int maxHeightInd) {
+
+    int index = maxHeightInd;
+
+    ArrayList<Integer[]> finalResult = new ArrayList<>();
+
+    while(index >=0){
+
+      finalResult.add(array.get(index));
+      index = seqs[index];
+    }
+
+
+    return finalResult;
+
+
+  }
+
+
 }
 
 

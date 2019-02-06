@@ -24,7 +24,7 @@ public class AlgoExpertArrays {
 
   public static void main(String[] args ) {
 
-    int[] arrayOne = {10,70,20,30,50,11,30};
+   // int[] arrayOne = {10,70,20,30,50,11,30};
 
    // int[] list = lonestRange(arrayOne);
 
@@ -57,7 +57,12 @@ public class AlgoExpertArrays {
    // expertArrays.findTotalPaths(temp);
    // System.out.println(expertArrays.findRepeatFirst("abbccccc"));
 
-    expertArrays.maxSumAIncreSubSeq(arrayOne).forEach(list->list.forEach(System.out::println));
+   // expertArrays.maxSumAIncreSubSeq(arrayOne).forEach(list->list.forEach(System.out::println));
+
+ //   expertArrays.maxIncreSubSeqBS(arrayOne);
+
+    SuffixTrie suffixTrie = new SuffixTrie();
+    suffixTrie.populateSuffixTrieFrom("babc");
 
   }
 
@@ -895,5 +900,54 @@ public class AlgoExpertArrays {
 
     return  result;
   }
+
+
+
+  public void maxIncreSubSeqBS(int[] array){
+
+    int[] seqs = new int[array.length+1];
+    int[] parent = new int[array.length];
+
+    Arrays.fill(parent,-1);
+
+    int length=0;
+
+    for(int i=0; i<array.length;i++){
+
+      int current = array[i];
+      int low = 1;
+      int high = length;
+      while(low<=high){
+
+        int mid = Math.floorDiv(low+high,2);
+
+        if(array[seqs[mid]] < array[i]){
+          low = mid+1;
+        }else {
+          high = mid-1;
+        }
+
+      }
+
+      int pos = low;
+
+      parent[i] = seqs[pos-1];
+      seqs[pos] = i;
+
+      if(pos>length){
+        length = pos;
+      }
+
+
+
+    }
+
+
+
+
+
+
+  }
+
 
 }

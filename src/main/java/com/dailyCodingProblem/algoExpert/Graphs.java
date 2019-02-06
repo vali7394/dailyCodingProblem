@@ -64,6 +64,8 @@ public class Graphs {
   public static void RiverProblem(int[][] matrix) {
 
 
+    ArrayList<Integer> list = new ArrayList<>();
+
     if(matrix==null || matrix.length==0 || matrix[0].length==0) System.out.println("Invalid");
 
     int[][] visited = new int[matrix.length][matrix[0].length];
@@ -75,7 +77,7 @@ public class Graphs {
           continue;
         }
         int count = countRevers(matrix,visited,i,j,0);
-        if(count > 0) System.out.println(count);
+        if(count > 0) list.add(count);
 
       }
 

@@ -1,6 +1,7 @@
 package com.dailyCodingProblem.algoExpert;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,42 +10,58 @@ import java.util.List;
 public class MinHeap {
 
 
-
-
-  public ArrayList<Integer> buildMinHeap(ArrayList<Integer> array){
-
-    int lastParentIndx = Math.floorDiv(array.size()-2,2);
-
-    for(int currentIdx = lastParentIndx ; currentIdx>=0; currentIdx--){
-
-
-      swap(currentIdx,array.size()-1,array);
-
-    }
-
-
-    return array;
+  public static void main(String[] args){
+    MinHeap minHeap = new MinHeap();
+    minHeap.heapSort(new int[]{8,5,2,9,5,6,3});
   }
 
 
-  public void swiftDown(int currentInd , int endInd , ArrayList<Integer> array){
+  public void heapSort(int[] array){
 
-    int firstchild = currentInd*2+1;
+   // buildMinHeap(array);
+    buildMapHeap(array);
+    for(int endIndx=array.length-1  ;endIndx>0;endIndx--){
+      //sfitDown(i,a);
+      swap(0,endIndx,array);
+      swiftDown(array,0,endIndx-1);
+    }
 
-    while(firstchild<=endInd){
+    Arrays.stream(array).forEach(System.out::println);
 
-      int secondChild = currentInd*2+2<=endInd?currentInd*2+2:-1;
-      int swapInd;
-      if(secondChild!=-1 && array.get(secondChild)<array.get(firstchild)){
-        swapInd = secondChild;
+  }
+
+
+
+  public void buildMinHeap(int[] array){
+
+    int lastParentInd = Math.floorDiv(array.length-2,2);
+
+    for(int i = lastParentInd ; i>=0 ; i--){
+      sfitDown(i,array.length-1,array);
+    }
+
+
+  }
+
+  public void sfitDown(int index , int endIndex , int[] array){
+
+    int firstChild = 2*index+1;
+
+    while(firstChild<=endIndex){
+
+      int secondChild = 2*index+2<=endIndex?2*index+2:-1;
+      int swapIndex;
+      if(secondChild!=-1 && array[firstChild] > array[secondChild]){
+        swapIndex = secondChild;
       }else {
-        swapInd =firstchild;
+        swapIndex = firstChild;
       }
 
-      if(array.get(swapInd)<array.get(currentInd)){
-        swap(swapInd,currentInd,array);
-        currentInd = swapInd;
-        firstchild = currentInd*2+1;
+
+      if(array[swapIndex] < array[index]){
+        swap(swapIndex,index,array);
+        index = swapIndex;
+        firstChild = 2*index+1;
       }else {
         return;
       }
@@ -53,69 +70,69 @@ public class MinHeap {
     }
 
 
-
-  }
-
-
-  public void swap(int i , int j , List<Integer> list){
-    int temp = list.get(i);
-    list.set(i,list.get(j));
-    list.set(j,temp);
   }
 
 
 
-  public void buildMaxHeap(ArrayList<Integer> array){
 
-    int lastParentInd = Math.floorDiv(array.size()-2,2);
+  public void swap(int i ,int j , int[] array){
+    int temp = array[i];
+    array[i] = array[j];
+    array[j]= temp;
+  }
 
-    for(int currenInd=lastParentInd ; currenInd>=0 ; currenInd--){
 
+  public void buildMapHeap(int[] array){
+
+    int lastParent = Math.floorDiv(array.length-2,2);
+
+    for(int i=lastParent;i>=0;i--){
+      swiftDown(array,i,array.length-1);
     }
 
 
-
-
   }
 
 
-  private void swiftDownMaxHeap(ArrayList<Integer> list , int endInd , int currentInd) {
+  public void swiftDown(int[] array,int index,int endIndex){
 
-    int firstChildInd = 2 * currentInd + 1;
+    int firstChild = 2*index+1;
 
-    while (firstChildInd <= endInd) {
+    while(firstChild<=endIndex){
 
-      int secondChild = 2 * currentInd + 2 <= endInd ? 2 * currentInd + 2 : -1;
-      int swapInd;
-
-      if (secondChild != -1 && list.get(secondChild) > list.get(firstChildInd)) {
-        swapInd = secondChild;
-      } else {
-        swapInd = firstChildInd;
+      int second = 2*index+2<=endIndex?2*index+2:-1;
+      int indexToSwap;
+      if(second!=-1 && array[firstChild] < array[second]){
+        indexToSwap = second;
+      }else {
+        indexToSwap = firstChild;
       }
 
-      if (list.get(swapInd) > list.get(currentInd)) {
-        swap(swapInd, currentInd, list);
-        currentInd = swapInd;
-        firstChildInd = currentInd * 2 + 1;
-      } else {
+      if(array[indexToSwap]>array[index]){
+        swap(index,indexToSwap,array);
+        index = indexToSwap;
+        firstChild = 2*index+1;
+      }
+      else {
         return;
       }
 
 
+
     }
+
   }
 
-    public void heapSort(ArrayList<Integer> array){
 
-      buildMaxHeap(array);
+  public void swiftUp(int currentIndex , int[] array){
 
-      for(int i=array.size()-1; i>0 ; i++){
+    int parentInd = Math.floorDiv(currentIndex-1,2);
 
-        swap(0,i,array);
-        swiftDown(0,i-1,array);
-
-      }
+    while(currentIndex>0 && array[currentIndex]<array[parentInd]){
+      swap(currentIndex,parentInd,array);
+      currentIndex = parentInd;
+      parentInd = Math.floorDiv(currentIndex-1,2);
+    }
 
 
   }
