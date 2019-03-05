@@ -1,11 +1,7 @@
 package com.dailyCodingProblem.algoExpert;
 
-import com.dailyCodingProblem.dailyCodingProblem.multithreading.Consumer;
-
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.Future;
-import java.util.function.Supplier;
 
 /**
  * Created by mshaik on 2/1/19.
@@ -315,6 +311,84 @@ public class BinarySearchTree {
 
 
   }
+
+
+  public void increasingSubMaxProdOf3(int[] array){
+
+    int maxProd = 0;
+
+    for(int i=1; i< array.length;i++){
+
+
+
+
+    }
+
+
+
+
+
+  }
+
+
+  public int leftMaxProduct(int[] array, int value){
+
+    int maxValue =0 ;
+
+    int maxIndex = -1;
+
+    for(int i=0; i<value;i++){
+      if(array[i] > maxValue && array[i] < array[value]){
+      maxIndex = i;
+      maxValue = array[i];
+      }
+    }
+
+    return maxIndex;
+
+  }
+
+
+  public int rightMaxProduct(int[] array , int value){
+
+    int maxProduct = 0;
+    int maxIdnex = -1;
+
+    for(int i=value+1; i<array.length;i++){
+
+      if(array[i] > array[value] && array[i] > maxProduct){
+        maxProduct = array[i];
+        maxIdnex = i;
+      }
+
+
+    }
+    return maxIdnex;
+
+  }
+
+
+  public void maxProduct(int[] array){
+
+    int maxProduct = 0;
+
+    for(int i=0; i< array.length;i++){
+
+      int left = leftMaxProduct(array,i);
+      int right  = rightMaxProduct(array,i);
+
+      left = left==-1?0:left;
+      right = right==-1?0:right;
+
+
+
+
+    }
+
+
+  }
+
+
 
 
 

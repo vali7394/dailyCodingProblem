@@ -1,5 +1,6 @@
 package com.dailyCodingProblem.practise.arrays;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,7 +24,8 @@ public class StringProblems {
    // problems.topKFreqWords(new String[]{"the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"},4);
   //  problems.subArrayWithGivenSum(new int[]{-2,-1,2,1},1);
 
-    equalizeArray(new int[]{3 ,3, 2, 1, 3});
+    //equalizeArray(new int[]{3 ,3, 2, 1, 3});
+    problems.roundOff( 24.988);
 
   }
 
@@ -406,6 +408,19 @@ public class StringProblems {
   }
 
 
+  public void topKElemetn(int[] array){
+
+
+
+
+
+
+
+
+
+  }
+
+
 
   public void topKFreqWords(String[] array , int k){
 
@@ -556,5 +571,9 @@ public class StringProblems {
 
   }
 
+
+  public void roundOff(double no){
+    System.out.print(new BigDecimal(no).setScale(2,BigDecimal.ROUND_HALF_UP));
+  }
 
 }
